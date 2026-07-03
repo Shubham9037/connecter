@@ -1,0 +1,108 @@
+{
+  "theme_and_archetype": {
+    "domain": "Fintech / B2B SaaS (Tally Integration)",
+    "theme": "LIGHT",
+    "archetype": "Archetype 4 (Swiss & High-Contrast)",
+    "rationale": "The dashboard needs to feel serious, secure, trustworthy, and dense-information-friendly. It focuses on authority, clarity, and function-first design. We are avoiding the standard 'soft SaaS' look by using stark contrast, strict grids, and flat geometry."
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Chivo",
+      "body": "IBM Plex Sans",
+      "monospace": "IBM Plex Mono"
+    },
+    "google_fonts_url": "https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap",
+    "usage": {
+      "h1": "text-3xl sm:text-4xl font-black tracking-tighter text-gray-900",
+      "h2": "text-xl sm:text-2xl font-bold tracking-tight text-gray-900",
+      "h3": "text-lg font-bold tracking-tight text-gray-900",
+      "body": "text-sm text-gray-700 leading-relaxed font-sans",
+      "labels": "text-xs font-bold uppercase tracking-[0.1em] text-gray-500",
+      "code_snippets_secrets": "font-mono text-sm tracking-tight text-gray-800"
+    }
+  },
+  "color_palette": {
+    "base": {
+      "background": "#FFFFFF",
+      "surface": "#F9FAFB",
+      "border": "#E5E7EB",
+      "text_primary": "#111827",
+      "text_secondary": "#4B5563"
+    },
+    "accents": {
+      "primary": "#002FA7",
+      "primary_hover": "#00227A",
+      "destructive": "#E50000",
+      "destructive_hover": "#B30000",
+      "success": "#059669",
+      "warning": "#D97706"
+    },
+    "rules": {
+      "gradients": "BANNED. Use flat solid colors only.",
+      "shadows": "BANNED. Rely on 1px solid borders for component separation."
+    }
+  },
+  "layout_and_spacing": {
+    "grid_system": "The 'Control Room' Grid",
+    "corner_radius": "rounded-none (Sharp corners everywhere)",
+    "container_padding": "p-6 or p-8",
+    "borders": "1px solid border-gray-200 on cards, tables, and inputs",
+    "navigation": "Strict top navigation bar with a secondary sub-navigation row below it for sections (Overview, Connectors, Logs, Security). This maximizes horizontal space for data tables."
+  },
+  "component_strategy": {
+    "shadcn_overrides": {
+      "Button": "Remove border-radius (rounded-none). Primary button must use bg-[#002FA7]. Use flat design without shadows.",
+      "Card": "Remove border-radius and shadow. Add border-gray-200. Use bg-white.",
+      "Table": "Dense padding (py-2 px-3). Use IBM Plex Mono for IDs, timestamps, and IPs. Hover state should be a stark bg-gray-50.",
+      "Dialog": "Remove border-radius. Add a solid 1px border. Backdrop should be a dense backdrop-blur-sm bg-gray-900/40.",
+      "Input": "Remove border-radius. Focus state should be a stark 2px solid ring of #002FA7 (ring-0 focus-visible:ring-2 focus-visible:ring-[#002FA7] focus-visible:ring-offset-0 focus-visible:border-transparent).",
+      "Badge": "Flat backgrounds, stark text colors, rounded-none."
+    },
+    "custom_elements": {
+      "copy_chip": "A small flat button with the value and a copy icon. When copied, show a brief success state (icon change) and a Sonner toast.",
+      "one_time_secret_reveal": "A stark warning box (border-l-4 border-warning bg-warning/10) containing the secret in a monospace font. A prominent 'I have saved it' button to dismiss."
+    },
+    "icons": "lucide-react (stroke-width: 2, sharp aesthetic)"
+  },
+  "specific_pages": {
+    "login": {
+      "layout": "Split screen (50/50). Left: Abstract geometric visual. Right: Centered login form.",
+      "visuals": "Left side image: https://images.unsplash.com/photo-1595411425732-e69c1abe2763?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGdlb21ldHJpYyUyMHBhdHRlcm4lMjBibGFjayUyMGFuZCUyMHdoaXRlfGVufDB8fHx8MTc4MzA4MDUxNnww&ixlib=rb-4.1.0&q=85 (Black and white abstract texture).",
+      "action": "Emergent Google Auth button (Stark white button with Google logo and black border)."
+    },
+    "dashboard_shell": {
+      "nav": "Top Navbar with Logo (Razio Connect), User Avatar/Logout. Sub-nav with links: Overview, Connectors, Sync Logs, Security Events."
+    },
+    "overview": {
+      "layout": "4-column grid (col-span-1 each) for high-level metrics. Use stark typography for numbers (e.g., text-4xl font-black)."
+    },
+    "connectors": {
+      "actions": "'Create Connector' button (Primary color). Table with columns: Name, Company, Status, Last Sync, Actions (Regenerate, Revoke). Use DropdownMenu for row actions."
+    },
+    "logs_and_security": {
+      "layout": "Filters (Connector dropdown, Date Range, Status) in a horizontal bar above the table. Table rows must be expandable to reveal raw JSON request/response in a monospace block."
+    }
+  },
+  "media_assets": {
+    "login_background": {
+      "url": "https://images.unsplash.com/photo-1595411425732-e69c1abe2763?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGdlb21ldHJpYyUyMHBhdHRlcm4lMjBibGFjayUyMGFuZCUyMHdoaXRlfGVufDB8fHx8MTc4MzA4MDUxNnww&ixlib=rb-4.1.0&q=85",
+      "description": "Black and white geometric abstraction for the left pane of the login screen."
+    }
+  },
+  "technical_requirements": {
+    "testing": "All interactive elements MUST have a data-testid attribute (e.g., data-testid='create-connector-btn', data-testid='copy-secret-btn').",
+    "packages_to_install": ["sonner", "lucide-react", "date-fns"],
+    "state_management": "Use React state for minimal UI state. Fetch data from backend (assumed to be implemented or mocked for now)."
+  },
+  "instructions_to_main_agent": [
+    "Load Google Fonts in the main index.html or index.css.",
+    "Initialize Sonner Toaster in the root layout.",
+    "Implement the Layout component with the Top Nav and Sub Nav.",
+    "Build out the Login page using the split-screen design and provided image.",
+    "Implement the Dashboard views (Overview, Connectors, Logs, Security). Mock the data if backend endpoints are not ready.",
+    "Ensure the Create Connector flow includes the one-time secret reveal UI.",
+    "Strictly adhere to the 'rounded-none' and 'no-shadow' rules in Tailwind configuration and Shadcn overrides.",
+    "Implement expandable table rows for the Sync Logs to view JSON payloads.",
+    "Use standard fetch API or axios to interact with /api/tally/sync, /api/tally/logs, etc., wrapping them in try-catch to display Sonner toasts on error."
+  ]
+}
